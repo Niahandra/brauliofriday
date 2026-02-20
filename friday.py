@@ -19,3 +19,12 @@ def main(page: ft.Page):
     accuracy_label = ft.Text(value="Accuracy: 0%", size=14)
     input_field = ft.TextField(hint_text="Type here", autofocus=True, width=280)
 
+    def submit_word(e):
+        nonlocal mistakes, current_index
+        user_input = input_field.value.strip()
+
+
+
+ft.app(target=main)
+
+ 
