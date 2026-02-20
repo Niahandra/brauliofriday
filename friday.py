@@ -19,20 +19,49 @@ def main(page: ft.Page):
     accuracy_label = ft.Text(value="Accuracy: 0%", size=14)
     input_field = ft.TextField(hint_text="Type here", autofocus=True, width=280)
 
+import flet as ft
+import random
+
+def main(page: ft.Page):
+    page.title = "Typing Game"
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+
+    # Word list
+    words = [
+        "apple", "banana", "cherry", "dragon", "elephant", "forest", "galaxy",
+        "horizon", "island", "jungle", "kingdom", "lemon", "mountain", "nebula",
+        "ocean", "pyramid", "quartz", "river", "sunset"
+    ]
+
+    # Shuffle and pick 15 words
+    random.shuffle(words)
+    game_words = words[:15]
+
+    mistakes = 0
+    current_index = 0
+
+    # UI elements
+    word_label = ft.Text(value=f"Word: {game_words[current_index]}", size=22)
+    status_label = ft.Text(value="", size=18)
+    progress_label = ft.Text(value=f"Progress: {current_index}/{len(game_words)}", size=16)
+    accuracy_label = ft.Text(value="Accuracy: 0%", size=16)
+    input_field = ft.TextField(hint_text="Type here", autofocus=True, width=250)
+
     def submit_word(e):
         nonlocal mistakes, current_index
         user_input = input_field.value.strip()
+
         if user_input == game_words[current_index]:
-            status_label.value = "Correct"
+            status_label.value = "Correct!"
             status_label.color = "green"
         else:
-            status_label.value = "Incorrect"
+            status_label.value = "Incorrect!"
             status_label.color = "red"
             mistakes += 1
 
-
+        current_index += 1
+        input_field.value = ""
 
 
 ft.app(target=main)
-
- 
