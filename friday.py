@@ -9,3 +9,6 @@ def main(page: ft.Page):
 
     random.shuffle(words) 
     game_words = words[:16]
+
+    mistakes = 0
+    current_index = 0
