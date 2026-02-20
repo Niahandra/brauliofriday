@@ -12,3 +12,10 @@ def main(page: ft.Page):
 
     mistakes = 0
     current_index = 0
+    
+    word_label = ft.Text(value=f"Word: {game_words[current_index]}", size=18)
+    status_label = ft.Text(value="", size=17)
+    progress_label = ft.Text(value=f"Progress: {current_index}/{len(game_words)}", size=14)
+    accuracy_label = ft.Text(value="Accuracy: 0%", size=14)
+    input_field = ft.TextField(hint_text="Type here", autofocus=True, width=280)
+
